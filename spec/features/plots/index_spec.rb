@@ -32,7 +32,7 @@ RSpec.describe "Plots Index" do
           expect(page).to have_content("Plot Number: 1")
           expect(page).to have_content("Plot Number: 2")
           expect(page).to have_content("Plot Number: 3")
-        save_and_open_page
+        # save_and_open_page
           within("##{plot_1.id}") do
             expect(page).to have_content("Purple Beauty Sweet Bell Pepper")
             expect(page).to have_content("Gold Potatoes")
@@ -40,7 +40,6 @@ RSpec.describe "Plots Index" do
 
             expect(page).to_not have_content("Sunflowers")
           end
-
 
           within("##{plot_2.id}") do
             expect(page).to have_content("Gold Potatoes")
@@ -50,7 +49,6 @@ RSpec.describe "Plots Index" do
             expect(page).to_not have_content("Basil")
           end
 
-
           within("##{plot_3.id}") do
             expect(page).to have_content("Basil")
             expect(page).to have_content("Sunflowers")
@@ -58,6 +56,51 @@ RSpec.describe "Plots Index" do
             expect(page).to_not have_content("Purple Beauty Sweet Bell Pepper")
             expect(page).to_not have_content("Gold Potatoes")
           end
+        end
+      end
+    end
+  end
+
+  describe "User Story 2" do
+    context "As a visitor" do
+      context "When I visit the plots index page ('/plots')" do
+        it "Next to each plant's name I see a link to remove that plant from that plot
+          When I click on that link I'm returned to the plots index page and I no longer see that plant listed under that plot,
+          And I still see that plant's name under other plots that is was associated with." do
+          # save_and_open_page
+          within("##{plot_1.id}") do
+            expect(page).to have_link("Remove Purple Beauty Sweet Bell Pepper")
+            expect(page).to have_link("Remove Gold Potatoes")
+            expect(page).to have_link("Remove Basil")
+
+            click_link("Remove Basil")
+
+            expect(current_path).to eq('/plots')
+            expect(page).to_not have_content("Basil")
+            expect(page).to have_content("Purple Beauty Sweet Bell Pepper")
+            expect(page).to have_content("Gold Potatoes")
+          end
+
+          within("##{plot_2.id}") do
+            expect(page).to have_link("Remove Gold Potatoes")
+
+            click_link("Remove Gold Potatoes")
+
+            expect(current_path).to eq('/plots')
+            expect(page).to_not have_content("Gold Potatoes")
+          end
+
+          within("##{plot_3.id}") do
+            expect(page).to have_link("Remove Basil")
+            expect(page).to have_link("Remove Sunflowers")
+
+            click_link("Remove Sunflowers")
+
+            expect(current_path).to eq('/plots')
+            expect(page).to_not have_content("Sunflowers")
+            expect(page).to have_content("Basil")
+          end
+          # save_and_open_page
         end
       end
     end
