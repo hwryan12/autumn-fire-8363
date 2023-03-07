@@ -30,21 +30,21 @@ RSpec.describe "Gardens Show" do
           And I see that this list is unique (no duplicate plants)
           And I see that this list only includes plants that take less than 100 days to harvest" do
           
-          expect(page).to have_content("Plant Name: Gold Potatoes").once
-          expect(page).to have_content("Description: Just stick it in the ground.").once
-          expect(page).to have_content("Days until ready to harvest: 120").once
+          expect(page).to have_content("Plant Name: Purple Beauty Sweet Bell Pepper").once
+          expect(page).to have_content("Description: Prefers rich, well draining soil").once
+          expect(page).to have_content("Days until ready to harvest: 90").once
           
-          expect(page).to have_content("Plant Name: Sunflowers").once
-          expect(page).to have_content("Description: Prefers lots and lots of sun.").once
-          expect(page).to have_content("Days until ready to harvest: 100").once
+          expect(page).to have_content("Plant Name: Basil").once
+          expect(page).to have_content("Description: Prefers indirect sun.").once
+          expect(page).to have_content("Days until ready to harvest: 60").once
           
-          expect(page).to_not have_content("Plant Name: Purple Beauty Sweet Bell Pepper")
-          expect(page).to_not have_content("Description: Prefers rich, well draining soil")
-          expect(page).to_not have_content("Days until ready to harvest: 90")
-
-          expect(page).to_not have_content("Plant Name: Basil")
-          expect(page).to_not have_content("Description: Prefers indirect sun.")
-          expect(page).to_not have_content("Days until ready to harvest: 60")
+          expect(page).to_not have_content("Plant Name: Gold Potatoes")
+          expect(page).to_not have_content("Description: Just stick it in the ground.")
+          expect(page).to_not have_content("Days until ready to harvest: 120")
+          
+          expect(page).to_not have_content("Plant Name: Sunflowers")
+          expect(page).to_not have_content("Description: Prefers lots and lots of sun.")
+          expect(page).to_not have_content("Days until ready to harvest: 100")
         end
       end
     end

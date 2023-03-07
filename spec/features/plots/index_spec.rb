@@ -32,7 +32,7 @@ RSpec.describe "Plots Index" do
           expect(page).to have_content("Plot Number: 1")
           expect(page).to have_content("Plot Number: 2")
           expect(page).to have_content("Plot Number: 3")
-        # save_and_open_page
+    
           within("##{plot_1.id}") do
             expect(page).to have_content("Purple Beauty Sweet Bell Pepper")
             expect(page).to have_content("Gold Potatoes")
@@ -67,7 +67,7 @@ RSpec.describe "Plots Index" do
         it "Next to each plant's name I see a link to remove that plant from that plot
           When I click on that link I'm returned to the plots index page and I no longer see that plant listed under that plot,
           And I still see that plant's name under other plots that is was associated with." do
-          # save_and_open_page
+         
           within("##{plot_1.id}") do
             expect(page).to have_link("Remove Purple Beauty Sweet Bell Pepper")
             expect(page).to have_link("Remove Gold Potatoes")
@@ -100,7 +100,6 @@ RSpec.describe "Plots Index" do
             expect(page).to_not have_content("Sunflowers")
             expect(page).to have_content("Basil")
           end
-          # save_and_open_page
         end
       end
     end

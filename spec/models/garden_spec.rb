@@ -29,6 +29,7 @@ RSpec.describe Garden do
 
     it "returns only the plants in a garden that take less than 100 days to harvest" do
       expect(garden.plants_listed).to eq([plant_1, plant_3])
+      expect(garden.plants_listed).to_not eq([plant_1, plant_2, plant_3, plant_4])
     end
   end
 end
