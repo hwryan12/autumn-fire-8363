@@ -27,6 +27,7 @@ RSpec.describe Garden do
     
     plot_3.plot_plants.create!(plant: plant_3)
   end 
+  
   describe "#plants_listed" do
     it "returns only the plants in a garden that take less than 100 days to harvest" do
       expect(garden.plants_listed).to eq([plant_3, plant_1])

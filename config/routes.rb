@@ -4,5 +4,4 @@ Rails.application.routes.draw do
   delete "/plots/:plot_id/plants/:plant_id", to: "plot_plants#destroy"
 
   resources :gardens, only: :show
-
 end

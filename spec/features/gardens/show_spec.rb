@@ -29,6 +29,9 @@ RSpec.describe "Gardens Show" do
         it "Then I see a list of plants that are included in that garden's plots
           And I see that this list is unique (no duplicate plants)
           And I see that this list only includes plants that take less than 100 days to harvest" do
+          plot_2.plot_plants.create!(plant: plant_1)
+          plot_3.plot_plants.create!(plant: plant_3)
+  
           visit "/gardens/#{garden.id}"
 
           expect(page).to have_content("Plant Name: Purple Beauty Sweet Bell Pepper").once
@@ -63,7 +66,7 @@ RSpec.describe "Gardens Show" do
 
           plot_3.plot_plants.create!(plant: plant_5)
 
-          visit "/gardens/#{garden.id}"
+           visit "/gardens/#{garden.id}"
 
           expect(plant_3.name).to appear_before(plant_5.name)
           expect(plant_5.name).to appear_before(plant_1.name)
