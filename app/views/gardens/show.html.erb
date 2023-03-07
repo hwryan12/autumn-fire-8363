@@ -1,4 +1,6 @@
-<h2></h2>
+<h2><%= @garden.name %></h2>
+  
+<h3>Plants that need less than 100 until ready to harvest:</h3>
 <ul>
   <% @fast_plants_list.each do |plant| %>
     <li>Plant Name: <%= plant.name %></li>

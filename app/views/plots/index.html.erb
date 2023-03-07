@@ -2,12 +2,14 @@
 <ul>
   <% @plots.each do |plot| %>
     <div id=<%= plot.id %>>
-      <li>Plot Number: <%= plot.number %></li>
+      <li><strong>Plot Number: <%= plot.number %></strong></li>
       <p>Plants:</p>
-      <% plot.plants.each do |plant| %>
-        <p><%= plant.name %></p>
-        <p><%= link_to "Remove #{plant.name}", "/plots/#{plot.id}/plants/#{plant.id}", method: :delete, local: true %></p>
-      <% end %>
+      <ol>
+        <% plot.plants.each do |plant| %>
+          <li><%= plant.name %></li>
+          <p><%= link_to "Remove #{plant.name}", "/plots/#{plot.id}/plants/#{plant.id}", method: :delete, local: true %></p>
+        <% end %>
+      </ol>
     </div>
   <% end %>
 </ul>
