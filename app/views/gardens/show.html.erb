@@ -1,0 +1,9 @@
+<h2></h2>
+<ul>
+  <% @slow_plants_list.each do |plant| %>
+    <li>Plant Name: <%= plant.name %></li>
+    <li>Description: <%= plant.description %></li>
+    <li>Days until ready to harvest: <%= plant.days_to_harvest %></li>
+    <br>
+  <% end %>
+</ul>
