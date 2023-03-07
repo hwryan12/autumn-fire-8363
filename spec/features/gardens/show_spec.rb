@@ -16,7 +16,9 @@ RSpec.describe "Gardens Show" do
     plot_1.plot_plants.create!(plant: plant_1)
     plot_1.plot_plants.create!(plant: plant_2)
     plot_1.plot_plants.create!(plant: plant_3)
+
     plot_2.plot_plants.create!(plant: plant_2)
+
     plot_3.plot_plants.create!(plant: plant_3)
     plot_3.plot_plants.create!(plant: plant_4)
 
@@ -45,6 +47,18 @@ RSpec.describe "Gardens Show" do
           expect(page).to_not have_content("Plant Name: Sunflowers")
           expect(page).to_not have_content("Description: Prefers lots and lots of sun.")
           expect(page).to_not have_content("Days until ready to harvest: 100")
+        end
+      end
+    end
+  end
+
+  describe "Extension" do
+    context "As a visitor" do
+      context "When I visit a garden's show page" do
+        it "Then I see the list of plants is sorted by the number of times the plant 
+          appears in any of that garden's plots from most to least" do
+                  
+          expect(plant_3.name).to appear_before(plant_1.name)
         end
       end
     end
