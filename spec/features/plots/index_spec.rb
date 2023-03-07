@@ -6,6 +6,7 @@ RSpec.describe "Plots Index" do
   let!(:plot_1) { garden.plots.create(number: 1, size: "Large", direction: "East") }
   let!(:plot_2) { garden.plots.create(number: 2, size: "Large", direction: "North") }
   let!(:plot_3) { garden.plots.create(number: 3, size: "Medium", direction: "East") }
+  let!(:plot_4) { garden.plots.create(number: 4, size: "Small", direction: "South") }
 
   let!(:plant_1) { Plant.create(name: "Purple Beauty Sweet Bell Pepper", description: "Prefers rich, well draining soil.", days_to_harvest: 90) }
   let!(:plant_2) { Plant.create(name: "Gold Potatoes", description: "Just stick it in the ground.", days_to_harvest: 120) }
@@ -16,7 +17,9 @@ RSpec.describe "Plots Index" do
     plot_1.plot_plants.create!(plant: plant_1)
     plot_1.plot_plants.create!(plant: plant_2)
     plot_1.plot_plants.create!(plant: plant_3)
+
     plot_2.plot_plants.create!(plant: plant_2)
+    
     plot_3.plot_plants.create!(plant: plant_3)
     plot_3.plot_plants.create!(plant: plant_4)
 
@@ -56,6 +59,10 @@ RSpec.describe "Plots Index" do
             expect(page).to_not have_content("Purple Beauty Sweet Bell Pepper")
             expect(page).to_not have_content("Gold Potatoes")
           end
+
+          within("##{plot_4.id}") do
+            expect(page).to have_content("")
+          end
         end
       end
     end
@@ -80,6 +87,17 @@ RSpec.describe "Plots Index" do
             expect(page).to have_content("Purple Beauty Sweet Bell Pepper")
             expect(page).to have_content("Gold Potatoes")
           end
+          
+          within("##{plot_3.id}") do
+            expect(page).to have_link("Remove Basil")
+            expect(page).to have_link("Remove Sunflowers")
+
+            click_link("Remove Sunflowers")
+
+            expect(current_path).to eq('/plots')
+            expect(page).to_not have_content("Sunflowers")
+            expect(page).to have_content("Basil")
+          end
 
           within("##{plot_2.id}") do
             expect(page).to have_link("Remove Gold Potatoes")
@@ -90,15 +108,8 @@ RSpec.describe "Plots Index" do
             expect(page).to_not have_content("Gold Potatoes")
           end
 
-          within("##{plot_3.id}") do
-            expect(page).to have_link("Remove Basil")
-            expect(page).to have_link("Remove Sunflowers")
-
-            click_link("Remove Sunflowers")
-
-            expect(current_path).to eq('/plots')
-            expect(page).to_not have_content("Sunflowers")
-            expect(page).to have_content("Basil")
+          within("##{plot_4.id}") do
+            expect(page).to have_content("")
           end
         end
       end
