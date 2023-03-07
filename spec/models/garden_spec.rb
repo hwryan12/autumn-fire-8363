@@ -21,15 +21,16 @@ RSpec.describe Garden do
     plot_1.plot_plants.create!(plant: plant_1)
     plot_1.plot_plants.create!(plant: plant_2)
     plot_1.plot_plants.create!(plant: plant_3)
-    plot_2.plot_plants.create!(plant: plant_2)
+
+    plot_2.plot_plants.create!(plant: plant_3)
+    plot_2.plot_plants.create!(plant: plant_1)
+    
     plot_3.plot_plants.create!(plant: plant_3)
-    plot_3.plot_plants.create!(plant: plant_4)
   end 
   describe "#plants_listed" do
-
     it "returns only the plants in a garden that take less than 100 days to harvest" do
-      expect(garden.plants_listed).to eq([plant_1, plant_3])
-      expect(garden.plants_listed).to_not eq([plant_1, plant_2, plant_3, plant_4])
+      expect(garden.plants_listed).to eq([plant_3, plant_1])
+      expect(garden.plants_listed).to_not match_array([plant_1, plant_2, plant_3, plant_4])
     end
   end
 end

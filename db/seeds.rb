@@ -8,13 +8,12 @@
 
  # Gardens
 Garden.create(name: "Turing Community Garden", organic: true)
-Garden.create(name: "Maple Grove Community Garden", organic: false)
-Garden.create(name: "Sunnyvale Community Garden", organic: true)
 
 # Plots
 Plot.create(number: 25, size: "Large", direction: "East", garden_id: 1)
-Plot.create(number: 13, size: "Small", direction: "South", garden_id: 2)
-Plot.create(number: 7, size: "Medium", direction: "West", garden_id: 3)
+Plot.create(number: 13, size: "Small", direction: "South", garden_id: 1)
+Plot.create(number: 7, size: "Medium", direction: "West", garden_id: 1)
+Plot.create(number: 4, size: "Small", direction: "South", garden_id: 1)
 
 # Plants
 Plant.create(name: "Purple Beauty Sweet Bell Pepper", description: "Prefers rich, well draining soil.", days_to_harvest: 100)
