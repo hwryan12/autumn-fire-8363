@@ -29,10 +29,10 @@ RSpec.describe "Plots Index" do
         it "I see a list of all plot numbers
           And under each plot number I see the names of all that plot's plants" do
           
-          expect(page).to have_content("Plot Nubmer: 1")
-          expect(page).to have_content("Plot Nubmer: 2")
-          expect(page).to have_content("Plot Nubmer: 3")
-
+          expect(page).to have_content("Plot Number: 1")
+          expect(page).to have_content("Plot Number: 2")
+          expect(page).to have_content("Plot Number: 3")
+        save_and_open_page
           within("##{plot_1.id}") do
             expect(page).to have_content("Purple Beauty Sweet Bell Pepper")
             expect(page).to have_content("Gold Potatoes")
